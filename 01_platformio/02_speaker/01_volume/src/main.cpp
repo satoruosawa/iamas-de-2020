@@ -1,6 +1,7 @@
 #include <M5Stack.h>
 
 int volume = 1;
+
 void setup() {
   M5.begin();
   M5.Speaker.setVolume(volume);

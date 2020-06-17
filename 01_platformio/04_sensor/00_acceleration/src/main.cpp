@@ -17,7 +17,11 @@ void setup() {
 
 void loop() {
   M5.IMU.getAccelData(&accX, &accY, &accZ);
+
+  // LCD 表示
   M5.Lcd.setCursor(0, 20);
-  M5.Lcd.printf("%5.2fG %5.2fG %5.2fG", accX, accY, accZ);
+  M5.Lcd.printf("Acceleration Sensor");
+  M5.Lcd.setCursor(0, 60);
+  M5.Lcd.printf("X: %5.2f G\nY: %5.2f G\nZ: %5.2f G", accX, accY, accZ);
   delay(1);
 }

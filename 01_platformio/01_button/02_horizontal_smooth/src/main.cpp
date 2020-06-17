@@ -1,14 +1,14 @@
 #include <M5Stack.h>
 
-int rectWidth = 0;
+int rect_width = 0;
 bool pressing = false;
 
 void setup() { M5.begin(); }
 
 void loop() {
   M5.update();
-  M5.Lcd.fillRect(rectWidth - 1, 0, 1, 240, WHITE);
-  M5.Lcd.fillRect(rectWidth, 0, 1, 240, BLACK);
+  M5.Lcd.fillRect(rect_width - 1, 0, 1, 240, WHITE);
+  M5.Lcd.fillRect(rect_width, 0, 1, 240, BLACK);
 
   if (M5.BtnA.wasPressed()) {
     pressing = true;
@@ -18,11 +18,11 @@ void loop() {
   }
 
   if (pressing) {
-    rectWidth += 1;
+    rect_width += 1;
   } else {
-    rectWidth -= 1;
+    rect_width -= 1;
   }
 
-  rectWidth = constrain(rectWidth, 0, 320);
+  rect_width = constrain(rect_width, 0, 320);
   delay(4);
 }

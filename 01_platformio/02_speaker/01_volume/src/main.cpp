@@ -8,25 +8,24 @@ void setup() {
 }
 
 void loop() {
-  M5.update();  // ボタンかスピーカーを使うときは、この行を追加する。
+  M5.update();
   if (M5.BtnA.wasPressed()) {
     volume--;
-    M5.Speaker.setVolume(volume);
+    volume = max(volume, 0);  // ボリュームが-1以下にならないようにする
+    M5.Speaker.setVolume(volume);  // スピーカーのボリュームを設定
   }
   if (M5.BtnB.wasPressed()) {
     M5.Speaker.tone(3520, 20);
   }
   if (M5.BtnC.wasPressed()) {
     volume++;
-    M5.Speaker.setVolume(volume);
+    volume = min(volume, 10);  // ボリュームが11以上にならないようにする
+    M5.Speaker.setVolume(volume);  // スピーカーのボリュームを設定
   }
-
-  volume = constrain(volume, 0, 10);
 
   M5.Lcd.setCursor(100, 100);
   M5.Lcd.setTextSize(3);
   M5.Lcd.print("Volume = ");
   M5.Lcd.print(volume);
   M5.Lcd.print(" ");
-  delay(10);
 }

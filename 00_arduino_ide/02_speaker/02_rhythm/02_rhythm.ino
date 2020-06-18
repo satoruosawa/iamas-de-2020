@@ -7,7 +7,7 @@ void setup() { M5.begin(); }
 
 void loop() {
   M5.update();
-  if (millis() < prev_update + tempo / 60.0 * 1000) return;
+  if (millis() < prev_update + 60 * 1000 / tempo) return;
   prev_update = millis();
   M5.Speaker.tone(3520, 20);
 }
@@ -15,5 +15,5 @@ void loop() {
 // void loop() {
 //   M5.update();
 //   M5.Speaker.tone(3520, 20);
-//   delay(tempo / 60.0 * 1000);
+//   delay(60 * 1000 / tempo);
 // }

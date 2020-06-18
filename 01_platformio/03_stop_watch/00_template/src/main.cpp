@@ -1,9 +1,9 @@
 #include <M5Stack.h>
 
-float start_sec = 0;
-float measure_sec = 0;
-float accumulate_sec = 0;
 bool is_playing = false;
+float accumulate_sec = 0;
+float measure_sec = 0;
+float start_sec = 0;
 
 void setup() {
   M5.begin();
@@ -44,5 +44,4 @@ void loop() {
   //
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.print(measure_sec);
-  delay(10);
 }

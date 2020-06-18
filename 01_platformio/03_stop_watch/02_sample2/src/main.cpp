@@ -1,12 +1,10 @@
 #include <M5Stack.h>
 
-#define M_PI 3.14159265358979323846
-
-float start_sec = 0;
-float measure_sec = 0;
-float last_measure_sec = 0;
-float accumulate_sec = 0;
 bool is_playing = false;
+float accumulate_sec = 0;
+float last_measure_sec = 0;
+float measure_sec = 0;
+float start_sec = 0;
 
 int center_x = 160;
 int center_y = 120;
@@ -41,11 +39,14 @@ void buttonManagement() {
 }
 
 void drawSecond() {
-  if (fmod(measure_sec / 60, 1) < fmod(last_measure_sec / 60, 1)) {
+  float measure_min = measure_sec / 60;
+  float last_measure_min = last_measure_sec / 60;
+  if (fmod(measure_min, 1) < fmod(last_measure_min, 1)) {
     M5.lcd.fillEllipse(center_x, center_y, 100, 100, BLACK);
   }
-  float quantum_sec = (int)(fmod(measure_sec / 60, 1) * 100) / 100.0;
-  float quantum_angle = quantum_sec * 2 * M_PI - M_PI / 2.0;
+  float div = 100;
+  float quantum = (floor)(fmod(measure_min, 1) * div) / div;
+  float quantum_angle = quantum * 2 * M_PI - M_PI / 2.0;
   int x0 = 90 * cos(quantum_angle) + center_x;
   int x1 = 95 * cos(quantum_angle) + center_x;
   int y0 = 90 * sin(quantum_angle) + center_y;
@@ -57,8 +58,9 @@ void drawBelowSecond() {
   if (fmod(measure_sec, 1) < fmod(last_measure_sec, 1)) {
     M5.lcd.fillEllipse(center_x, center_y, 86, 86, BLACK);
   }
-  float quantum_below = (int)(fmod(measure_sec, 1) * 50) / 50.0;
-  float quantum_angle = quantum_below * 2 * M_PI - M_PI / 2.0;
+  float div = 50;
+  float quantum = (floor)(fmod(measure_sec, 1) * div) / div;
+  float quantum_angle = quantum * 2 * M_PI - M_PI / 2.0;
   int x0 = 80 * cos(quantum_angle) + center_x;
   int x1 = 85 * cos(quantum_angle) + center_x;
   int y0 = 80 * sin(quantum_angle) + center_y;

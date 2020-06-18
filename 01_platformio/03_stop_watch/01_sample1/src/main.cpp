@@ -1,10 +1,9 @@
 #include <M5Stack.h>
 
-float start_sec = 0;
-float measure_sec = 0;
-float accumulate_sec = 0;
 bool is_playing = false;
-int rect_count = 0;
+float accumulate_sec = 0;
+float measure_sec = 0;
+float start_sec = 0;
 
 void setup() {
   M5.begin();
@@ -35,9 +34,8 @@ void loop() {
   int x = fmod(measure_sec, 10) / 10 * 320;  // fmodは10で割った余り
   int y = floor(measure_sec / 10);           // floorは切り捨て
 
-  M5.Lcd.drawRect(x, y * 20 + 40, -20, 20, WHITE);
+  M5.Lcd.drawRect(x, y * 20 + 40, 1, 18, WHITE);
 
   M5.Lcd.setCursor(10, 10);
   M5.Lcd.print(measure_sec);
-  delay(10);
 }

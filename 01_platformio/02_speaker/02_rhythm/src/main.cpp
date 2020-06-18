@@ -15,5 +15,5 @@ void loop() {
 // void loop() {
 //   M5.update();
 //   M5.Speaker.tone(3520, 20);
-//   delay(tempo / 60.0 * 1000);
+//   delay(60 * 1000 / tempo);
 // }

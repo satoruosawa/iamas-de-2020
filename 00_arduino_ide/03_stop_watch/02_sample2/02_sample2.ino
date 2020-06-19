@@ -45,7 +45,7 @@ void drawSecond() {
     M5.lcd.fillEllipse(center_x, center_y, 100, 100, BLACK);
   }
   float div = 100;
-  float quantum = (floor)(fmod(measure_min, 1) * div) / div;
+  float quantum = floor(fmod(measure_min, 1) * div) / div;
   float quantum_angle = quantum * 2 * M_PI - M_PI / 2.0;
   int x0 = 90 * cos(quantum_angle) + center_x;
   int x1 = 95 * cos(quantum_angle) + center_x;
@@ -59,7 +59,7 @@ void drawBelowSecond() {
     M5.lcd.fillEllipse(center_x, center_y, 86, 86, BLACK);
   }
   float div = 50;
-  float quantum = (floor)(fmod(measure_sec, 1) * div) / div;
+  float quantum = floor(fmod(measure_sec, 1) * div) / div;
   float quantum_angle = quantum * 2 * M_PI - M_PI / 2.0;
   int x0 = 80 * cos(quantum_angle) + center_x;
   int x1 = 85 * cos(quantum_angle) + center_x;

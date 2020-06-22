@@ -84,7 +84,7 @@ void loop() {
     M5.Lcd.clear(BLACK);
     M5.Lcd.setCursor(0, 110);
     M5.Lcd.print("Flip + rotate M5Stack GREY");
-    m5Bmm150.calibrate(10000);
+    m5Bmm150.calibrate(20000);
     M5.Lcd.clear(BLACK);
     M5.Lcd.setCursor(0, 110);
     M5.Lcd.print("Done calibration.");

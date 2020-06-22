@@ -14,7 +14,6 @@ void setup() {
   M5.IMU.Init();
   filter.begin(sampling_freq);
 
-  M5.Lcd.clear(BLACK);
   M5.Lcd.setTextSize(2);
   loop_interval_microsec = 1000000 / sampling_freq;
   prev_loop = micros();
@@ -40,6 +39,8 @@ void loop() {
   M5.Lcd.setCursor(0, 60);
   M5.Lcd.printf("Pitch:%7.2f[deg]\n Roll:%7.2f[deg]\n  Yaw:%7.2f[deg]",
                 filter.getPitch(), filter.getRoll(), filter.getYaw());
+
+  // loop周波数が指定した周波数以下になると、計算精度が落ちる
   M5.Lcd.printf("\n\nActual Frequency %5.2fHz",
                 1000000 / (float)(now - prev_loop));
 

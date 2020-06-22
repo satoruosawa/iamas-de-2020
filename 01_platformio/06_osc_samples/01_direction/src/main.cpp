@@ -2,8 +2,8 @@
 #include <M5Stack.h>
 #include <Wire.h>
 
-#include "m5bmm150.h"
-#include "wifi-info.h"
+#include "./m5bmm150.h"
+#include "./wifi-info.h"
 
 const String SSID = WIFI_SSID;            // "xxxx"
 const String PASSWORD = WIFI_PASSWORD;    // "xxxx"

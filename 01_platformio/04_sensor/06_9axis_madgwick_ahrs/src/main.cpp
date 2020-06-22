@@ -5,7 +5,7 @@
 #include <MadgwickAHRS.h>
 #include <Wire.h>
 
-#include "m5bmm150.h"
+#include "./m5bmm150.h"
 
 M5Bmm150 m5Bmm150;
 Madgwick filter;

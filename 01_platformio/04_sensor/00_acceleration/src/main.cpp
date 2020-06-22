@@ -1,27 +1,26 @@
-#define M5STACK_MPU6886  // この行は #include <M5Stack.h> より先に記述する
+#define M5STACK_MPU6886  // #include <M5Stack.h> の前にこの行を追加
 
 #include <M5Stack.h>
 
-float accX = 0.0;
-float accY = 0.0;
-float accZ = 0.0;
-
 void setup() {
   M5.begin();
-  M5.Power.begin();  // 加速度センサを使うときはこの行を追加する。
-  M5.IMU.Init();  // 加速度センサを使うときはこの行を追加する。
+  M5.Power.begin();  // 加速度センサかジャイロセンサを使うときはこの行を追加
+  M5.IMU.Init();  // 加速度センサかジャイロセンサを使うときはこの行を追加
 
   M5.Lcd.fillScreen(BLACK);
   M5.Lcd.setTextSize(2);
 }
 
 void loop() {
-  M5.IMU.getAccelData(&accX, &accY, &accZ);
+  float acc_x = 0.0;
+  float acc_y = 0.0;
+  float acc_z = 0.0;
+  M5.IMU.getAccelData(&acc_x, &acc_y, &acc_z);
 
   // LCD 表示
   M5.Lcd.setCursor(0, 20);
   M5.Lcd.printf("Acceleration Sensor");
   M5.Lcd.setCursor(0, 60);
-  M5.Lcd.printf("X: %5.2f G\nY: %5.2f G\nZ: %5.2f G", accX, accY, accZ);
+  M5.Lcd.printf("X: %5.2f G\nY: %5.2f G\nZ: %5.2f G", acc_x, acc_y, acc_z);
   delay(1);
 }

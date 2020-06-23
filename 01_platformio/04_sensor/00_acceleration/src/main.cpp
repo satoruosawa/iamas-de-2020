@@ -16,6 +16,7 @@ void loop() {
   float acc_y = 0.0;
   float acc_z = 0.0;
   M5.IMU.getAccelData(&acc_x, &acc_y, &acc_z);
+  // getAccelData関数はポインタ渡しでデータを取得する。
 
   // LCD 表示
   M5.Lcd.setCursor(0, 20);

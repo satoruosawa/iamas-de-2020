@@ -59,12 +59,15 @@ void loop() {
   float gyro_x = 0.0;
   float gyro_y = 0.0;
   float gyro_z = 0.0;
+  float mag_x = 0.0;
+  float mag_y = 0.0;
+  float mag_z = 0.0;
   M5.IMU.getAccelData(&acc_x, &acc_y, &acc_z);
   M5.IMU.getGyroData(&gyro_x, &gyro_y, &gyro_z);
   m5Bmm150.update();
-  filter.update(gyro_x, gyro_y, gyro_z, acc_x, acc_y, acc_z,
-                m5Bmm150.getRawData().x, m5Bmm150.getRawData().y,
-                m5Bmm150.getRawData().z);
+  m5Bmm150.getCalibratedData(&mag_x, &mag_y, &mag_z);
+  filter.update(gyro_x, gyro_y, gyro_z, acc_x, acc_y, acc_z, mag_x, -mag_y,
+                mag_z);
   OscWiFi.update();
   OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/rotaion", filter.getPitch(),
                filter.getRoll(), filter.getYaw());

@@ -14,7 +14,7 @@ const int TARGET_PORT = 10000;
 Madgwick filter;
 
 unsigned long loop_interval_microsec, prev_loop;
-int sampling_freq = 25;  // Hz
+int sampling_freq = 10;  // Hz
 
 void setup() {
   M5.begin();

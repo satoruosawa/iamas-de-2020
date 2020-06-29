@@ -31,9 +31,9 @@ void loop() {
   integral_gyro_z += diff_sec * gyro_z;
 
   // LCD 表示
-  M5.Lcd.setCursor(0, 20);
-  M5.Lcd.printf("Gyro Sensor");
-  M5.Lcd.setCursor(0, 60);
+  M5.Lcd.setCursor(0, 0);
+  M5.Lcd.printf("Gyro sensor integration");
+  M5.Lcd.setCursor(0, 40);
   M5.Lcd.printf("X:%4.0f[deg]\nY:%4.0f[deg]\nZ:%4.0f[deg]", integral_gyro_x,
                 integral_gyro_y, integral_gyro_z);
 }

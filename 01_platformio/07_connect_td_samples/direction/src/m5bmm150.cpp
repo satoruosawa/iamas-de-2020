@@ -109,12 +109,6 @@ void M5Bmm150::getCalibratedData(float *mx, float *my, float *mz) {
   *mz = dev_.data.z - mag_offset_.z;
 }
 
-void M5Bmm150::getNormData(float *mx, float *my, float *mz) {
-  *mx = (dev_.data.x - mag_offset_.x) / (mag_max_.x - mag_min_.x) * 2;
-  *my = (dev_.data.y - mag_offset_.y) / (mag_max_.y - mag_min_.y) * 2;
-  *mz = (dev_.data.z - mag_offset_.z) / (mag_max_.z - mag_min_.z) * 2;
-}
-
 float M5Bmm150::getHeadDirection() {
   return atan2(dev_.data.x - mag_offset_.x, dev_.data.y - mag_offset_.y) *
          180.0 / M_PI;

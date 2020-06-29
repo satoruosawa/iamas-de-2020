@@ -2,9 +2,10 @@
 
 #include <M5Stack.h>
 
-unsigned long loop_interval_micros =
-    1000000 / 25;  // = 1000000[micro sec] / 25[Hz]
-unsigned long prev_loop = 0UL;
+// M5Stackのライブラリー内のAHRSは更新周波数25Hzに固定されている。
+// 1000000[micro sec] / 25[Hz]
+unsigned long interval = 1000000 / 25;
+unsigned long prev_update = 0;
 
 void setup() {
   M5.begin();
@@ -13,12 +14,13 @@ void setup() {
 
   M5.Lcd.fillScreen(BLACK);
   M5.Lcd.setTextSize(2);
-  prev_loop = micros();
+  prev_update = micros();
 }
 
 void loop() {
+  // 更新周波数を25Hzに制御するためのアルゴリズム。
   unsigned long now = micros();
-  if (now < prev_loop + loop_interval_micros) return;
+  if (now < prev_update + interval) return;
 
   float pitch = 0.0;
   float roll = 0.0;
@@ -32,8 +34,10 @@ void loop() {
   M5.Lcd.printf("Pitch:%7.2f[deg]\nRoll:%7.2f[deg]\nYaw:%7.2f[deg]", pitch,
                 roll, yaw);
 
-  // loop周波数が25Hz以下になると、計算精度が落ちる
+  // 実際の更新周波数 = 1 / 期間[秒]
+  // 実際の更新周波数が25Hz以下になると、正確に計算できない
   M5.Lcd.printf("\n\nActual Frequency %5.2fHz",
-                1000000 / (float)(now - prev_loop));
-  prev_loop = now;
+                1000000 / (float)(now - prev_update));
+
+  prev_update = now;  // 更新周波数を25Hzに制御するためのアルゴリズム。
 }

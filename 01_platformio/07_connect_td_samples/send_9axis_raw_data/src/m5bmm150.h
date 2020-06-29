@@ -19,7 +19,6 @@ class M5Bmm150 {
   void update();
   bmm150_mag_data getRawData();
   void getCalibratedData(float *mx, float *my, float *mz);
-  void getNormData(float *mx, float *my, float *mz);
   float getHeadDirection();
 
  private:

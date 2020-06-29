@@ -16,15 +16,23 @@ for root, dirs, files in os.walk(toRootPath, topdown = False):
 # Copy platformio to arduino_ide
 li = glob.glob(fromRootPath + '/**/src/', recursive = True)
 for fromSrcPath in li:
+  # Exception 1: Avoid projects in each directories.
+  if fromSrcPath == '../01_platformio/04_sensor/acceleration_2d_1/src/'\
+    or fromSrcPath == '../01_platformio/04_sensor/acceleration_2d_2/src/'\
+    or fromSrcPath == '../01_platformio/04_sensor/acceleration_2d_3/src/'\
+    or fromSrcPath == '../01_platformio/04_sensor/direction_1/src/'\
+    or fromSrcPath == '../01_platformio/04_sensor/rich_bmm150_calibrator/src/':
+    continue
+  # Exception 1: End
   toDirPath = fromSrcPath.replace(fromRootPath, toRootPath)
   toDirPath = toDirPath.replace('src/', '')
   os.makedirs(toDirPath, exist_ok = True)
   for fromFilePath in glob.glob(fromSrcPath + '*.*'):
     fileName = fromFilePath.split('/')[-1]
-    # Exception 1
+    # Exception 2: Avoid files in each directories.
     if fileName == 'wifi-info.h':
       continue
-    # Exception 1 End
+    # Exception 2: End
     fromFileName = fileName
     toFileName = fileName
     if fileName == 'main.cpp':
@@ -37,7 +45,7 @@ for fromSrcPath in li:
     print('Copy to')
     print(toFilePath)
     print('\n')
-    # Exception 2
+    # Exception 3: Replace words in each files.
     if fileName == 'main.cpp':
       with open(toFilePath) as f:
         data_lines = f.read()
@@ -46,4 +54,4 @@ for fromSrcPath in li:
       data_lines = data_lines.replace('#include "./wifi-info.h"\n', '')
       with open(toFilePath, mode="w") as f:
         f.write(data_lines)
-    # Exception 2 End
+    # Exception 3: End

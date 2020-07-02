@@ -21,7 +21,8 @@ for fromSrcPath in li:
     or fromSrcPath == '../01_platformio/04_sensor/acceleration_2d_2/src/'\
     or fromSrcPath == '../01_platformio/04_sensor/acceleration_2d_3/src/'\
     or fromSrcPath == '../01_platformio/04_sensor/direction_1/src/'\
-    or fromSrcPath == '../01_platformio/04_sensor/rich_bmm150_calibrator/src/':
+    or fromSrcPath == '../01_platformio/04_sensor/rich_bmm150_calibrator/src/'\
+    or fromSrcPath == '../01_platformio/08_server/00_simple_server/src/':
     continue
   # Exception 1: End
   toDirPath = fromSrcPath.replace(fromRootPath, toRootPath)

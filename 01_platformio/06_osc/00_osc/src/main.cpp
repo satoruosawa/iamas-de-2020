@@ -1,6 +1,8 @@
 #include <ArduinoOSC.h>
 #include <M5Stack.h>
 
+#include "./wifi-info.h"
+
 // Wi-Fiの設定
 const String SSID = WIFI_SSID;          // 各自のSSIDに変更 "ssid"
 const String PASSWORD = WIFI_PASSWORD;  // 各自のWiFiパスワードに変更 "pass"
@@ -30,7 +32,7 @@ void setup() {
 void loop() {
   OscWiFi.update();  // OSCを使うときは、この行を追加
   float second = millis() / 1000.0;
-  OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/test", second);
+  OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/time", second);
 
   // LCD 表示
   M5.Lcd.setCursor(0, 120);

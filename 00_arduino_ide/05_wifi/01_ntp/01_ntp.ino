@@ -8,8 +8,6 @@ const String NTP_SERVER = "ntp.nict.jp";
 const long GMT_OFFSET_SEC = 9 * 3600;  // +9hours
 const int DAYLIGHT_OFFSET_SEC = 0;     // summer time offset
 
-void PrintLocalTime();
-
 void setup() {
   M5.begin();
   M5.lcd.setTextSize(2);
@@ -24,24 +22,18 @@ void setup() {
   M5.Lcd.println(WiFi.localIP());
 
   configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, NTP_SERVER.c_str());
-  PrintLocalTime();
 }
 
 void loop() {
-  PrintLocalTime();
-  delay(1000);
-}
-
-void PrintLocalTime() {
   struct tm timeinfo;
   M5.Lcd.setCursor(0, 100);
   if (!getLocalTime(&timeinfo)) {
     M5.Lcd.println("Failed to obtain time");
     return;
   }
-  M5.Lcd.println(&timeinfo, "%Y %m %d %a %H:%M:%S");
   M5.Lcd.println(String(timeinfo.tm_year + 1900) + "/" +
                  String(timeinfo.tm_mon + 1) + "/" + String(timeinfo.tm_mday) +
                  " " + String(timeinfo.tm_hour) + ":" +
                  String(timeinfo.tm_min) + ":" + String(timeinfo.tm_sec));
+  delay(10);
 }

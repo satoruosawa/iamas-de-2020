@@ -1,5 +1,4 @@
 #include <M5Stack.h>
-#include <Wire.h>
 
 #include "./m5bmm150.h"
 

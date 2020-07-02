@@ -1,5 +1,4 @@
 #include <M5Stack.h>
-#include <Wire.h>  // 磁気センサーライブラリはWireライブラリも必要
 
 #include "./m5bmm150.h"  // 磁気センサーライブラリを使うための宣言
 

@@ -3,7 +3,6 @@
 #include <ArduinoOSC.h>
 #include <M5Stack.h>
 #include <MadgwickAHRS.h>
-#include <Wire.h>
 
 #include "./m5bmm150.h"
 #include "./wifi-info.h"

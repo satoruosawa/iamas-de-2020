@@ -8,7 +8,7 @@ void setup() {
   M5.IMU.Init();  // 加速度センサかジャイロセンサを使うときはこの行を追加
 
   M5.Lcd.fillScreen(BLACK);
-  M5.Lcd.setTextSize(2);
+  M5.Lcd.setTextSize(3);
 }
 
 void loop() {
@@ -21,7 +21,7 @@ void loop() {
   // LCD 表示
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.printf("Acceleration Sensor");
-  M5.Lcd.setCursor(0, 40);
+  M5.Lcd.setCursor(0, 60);
   // printf関数によって、通常のC言語フォーマットに沿った書式指定ができる。
   // %5.2f　は、右詰め, 5マス分の幅, 小数点以下を2桁に揃える。
   M5.Lcd.printf("X: %5.2f G\nY: %5.2f G\nZ: %5.2f G", acc_x, acc_y, acc_z);

@@ -31,8 +31,8 @@ void loop() {
   M5.Lcd.setCursor(0, 20);
   M5.Lcd.printf("Rotation");
   M5.Lcd.setCursor(0, 60);
-  M5.Lcd.printf("Pitch:%7.2f[deg]\nRoll:%7.2f[deg]\nYaw:%7.2f[deg]", pitch,
-                roll, yaw);
+  M5.Lcd.printf(" Roll:%7.2f[deg]\nPitch:%7.2f[deg]\n  Yaw:%7.2f[deg]", roll,
+                pitch, yaw);
 
   // 実際の更新周波数 = 1 / 期間[秒]
   // 実際の更新周波数が25Hz以下になると、正確に計算できない

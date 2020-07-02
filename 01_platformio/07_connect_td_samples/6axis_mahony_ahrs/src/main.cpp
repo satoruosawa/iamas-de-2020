@@ -53,8 +53,8 @@ void loop() {
   M5.Lcd.print("Target Port: ");
   M5.Lcd.println(TARGET_PORT);
   M5.Lcd.println();
-  M5.Lcd.printf("Rotaion:\n  Pitch: %7.2f\n  Roll: %7.2f\n  Yaw: %7.2f", pitch,
-                roll, yaw);
+  M5.Lcd.printf("Rotaion:\n   Roll: %7.2f\n  Pitch: %7.2f\n    Yaw: %7.2f",
+                roll, pitch, yaw);
   M5.Lcd.printf("\n\nActual Frequency %5.2fHz",
                 1000000 / (float)(now - prev_loop));
 

@@ -60,10 +60,8 @@ void loop() {
   M5.Lcd.print("Target Port: ");
   M5.Lcd.println(TARGET_PORT);
   M5.Lcd.println();
-  M5.Lcd.printf("Gyro:\n  X: %7.2f\n  Y: %7.2f\n  Z: %7.2f\n", gyro_x, gyro_y,
-                gyro_z);
-  M5.Lcd.printf("Rotaion:\n  Pitch: %7.2f\n  Roll: %7.2f\n  Yaw: %7.2f\n",
-                filter.getPitch(), filter.getRoll(), filter.getYaw());
+  M5.Lcd.printf("Rotaion:\n   Roll: %7.2f\n  Pitch: %7.2f\n    Yaw: %7.2f\n",
+                filter.getRoll(), filter.getPitch(), filter.getYaw());
   M5.Lcd.printf("\n\nActual Frequency %5.2fHz",
                 1000000 / (float)(now - prev_loop));
   prev_loop = now;

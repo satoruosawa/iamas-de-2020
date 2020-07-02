@@ -16,7 +16,7 @@ void setup() {
   }
 
   m5Bmm150.loadOffset();  // キャリブレーションデータをロード
-  M5.Lcd.setTextSize(2);
+  M5.Lcd.setTextSize(3);
 }
 
 void loop() {
@@ -26,7 +26,7 @@ void loop() {
 
   // LCD 表示
   M5.Lcd.setCursor(0, 0);
-  M5.Lcd.printf("Direction: %7.2f[deg]", dir);
+  M5.Lcd.printf("Direction:\n  %7.2f[deg]", dir);
 
   delay(100);
 }

@@ -68,8 +68,9 @@ void loop() {
   filter.update(gyro_x, gyro_y, gyro_z, acc_x, acc_y, acc_z, mag_x, -mag_y,
                 mag_z);
   OscWiFi.update();
-  OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/rotaion", filter.getPitch(),
-               filter.getRoll(), filter.getYaw());
+  OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/roll", filter.getRoll());
+  OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/pitch", filter.getPitch());
+  OscWiFi.send(TARGEET_IP.c_str(), TARGET_PORT, "/yaw", filter.getYaw());
 
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.println("Send OSC");
@@ -78,8 +79,8 @@ void loop() {
   M5.Lcd.print("Target Port: ");
   M5.Lcd.println(TARGET_PORT);
   M5.Lcd.println();
-  M5.Lcd.printf("Rotaion:\n  Pitch: %7.2f\n  Roll: %7.2f\n  Yaw: %7.2f\n",
-                filter.getPitch(), filter.getRoll(), filter.getYaw());
+  M5.Lcd.printf("Rotaion:\n   Roll: %7.2f\n  Pitch: %7.2f\n    Yaw: %7.2f\n",
+                filter.getRoll(), filter.getPitch(), filter.getYaw());
   M5.Lcd.printf("\n\nActual Frequency %5.2fHz",
                 1000000 / (float)(now - prev_loop));
   prev_loop = now;

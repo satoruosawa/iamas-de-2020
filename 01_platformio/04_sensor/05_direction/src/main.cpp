@@ -1,5 +1,7 @@
 #include <M5Stack.h>
-#include <Wire.h>  // 磁気センサーライブラリはWireライブラリも必要
+// WireライブラリはM5Stackライブラリの中で既にincludeされているので、
+// ここでincludeする必要はないです。
+// #include <Wire.h>  // 磁気センサーライブラリはWireライブラリも必要
 
 #include "./m5bmm150.h"  // 磁気センサーライブラリを使うための宣言
 
@@ -16,7 +18,7 @@ void setup() {
   }
 
   m5Bmm150.loadOffset();  // キャリブレーションデータをロード
-  M5.Lcd.setTextSize(2);
+  M5.Lcd.setTextSize(3);
 }
 
 void loop() {
@@ -26,7 +28,7 @@ void loop() {
 
   // LCD 表示
   M5.Lcd.setCursor(0, 0);
-  M5.Lcd.printf("Direction: %7.2f[deg]", dir);
+  M5.Lcd.printf("Direction:\n  %7.2f[deg]", dir);
 
   delay(100);
 }

@@ -8,7 +8,7 @@ void setup() {
   M5.IMU.Init();
 
   M5.Lcd.fillScreen(BLACK);
-  M5.Lcd.setTextSize(2);
+  M5.Lcd.setTextSize(3);
 }
 
 void loop() {
@@ -21,7 +21,7 @@ void loop() {
   // LCD 表示
   M5.Lcd.setCursor(0, 0);
   M5.Lcd.printf("Gyro Sensor");
-  M5.Lcd.setCursor(0, 40);
+  M5.Lcd.setCursor(0, 60);
   M5.Lcd.printf("X:%4.0f[deg/s]\nY:%4.0f[deg/s]\nZ:%4.0f[deg/s]", gyro_x,
                 gyro_y, gyro_z);
 
